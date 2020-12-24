@@ -108,6 +108,15 @@ def run_jarvis():
     elif "joke" in command:
         joke = pyjokes.get_joke()
         talk(joke)
+    elif "wolfram" in command:
+        app_id = "7AWQ2A-9YH2Q7PV95"
+        client = wolframalpha.Client(app_id)
+        question = command.replace('wolfram', '')
+        res = client.query(question)
+        answer = next(res.results).text
+        talk("According to Wolfram")
+        print(answer)
+        talk(answer)
     
 
 run_jarvis()
